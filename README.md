@@ -1,29 +1,52 @@
-# ClipSlots is a ClipBoard-for-Mac
+# ClipSlots
 
-It's a native macOS menu bar clipboard manager with two keyboard-accessible slots and 30 recent plain-text copies. It keeps slots and history in memory, so both clear when the app quits. It requires macOS 14 or later and Xcode Command Line Tools with Swift 6 or later.
+A lightweight, native macOS menu bar clipboard manager that gives you **two dedicated clipboard slots** and a **30-item plain-text history**—all stored strictly in memory.
 
-## Build and launch
+## Features
+
+- **2 Extra Clipboard Slots:** Copy and paste independent snippets via global shortcuts without overwriting your system clipboard.
+- **Plain-Text History:** Automatically tracks your 30 most recent standard copies. Search, copy, or delete individual entries directly from the menu bar, or wipe everything with **Clear All**.
+- **Privacy-First & Ephemeral:** Slots and history live exclusively in RAM and clear automatically when you quit the app. Items marked as concealed, transient, or auto-generated (such as password manager copies) are ignored.
+
+## Requirements
+
+- macOS 14 (Sonoma) or later
+- Xcode Command Line Tools with Swift 6 or later
+
+## Build & Run
+
+Run the test suite and build the app bundle:
 
 ```sh
 swift test
 ./scripts/build_and_run.sh
 ```
 
-Pass `--debug` to build and launch a debug version. The script assembles `build/ClipSlots.app`, signs it with your **ClipSlots Dev** Keychain signing identity when available, and opens the app. If macOS prompts, allow `codesign` to use the signing key. Ad-hoc signing may require you to grant Accessibility again after rebuilding.
+Pass `--debug` to build and launch a debug configuration:
 
-## First launch
+```sh
+./scripts/build_and_run.sh --debug
+```
 
-1. Click the clipboard icon in the menu bar, then click **Open Accessibility Settings**.
-2. In **System Settings → Privacy & Security → Accessibility**, enable **ClipSlots**. If it is missing, use **+** and select `build/ClipSlots.app` from this directory.
-3. Return to the ClipSlots menu and click **Refresh**. If macOS asks you to reopen the app, quit it and reopen the same app bundle.
+The script assembles `build/ClipSlots.app`, signs it with your **ClipSlots Dev** Keychain signing identity when available, and launches it.
 
-## Shortcuts
+> [!NOTE]
+> If macOS prompts you during the build, allow `codesign` to access the signing key. If you build with ad-hoc signing instead, you may need to re-grant Accessibility permission after rebuilding.
 
-| Slot | Copy selection | Paste into the active app |
-| --- | --- | --- |
-| 1 | ⌥⌘C | ⌥⌘V |
-| 2 | ⌃⌘C | ⌃⌘V |
+## First Launch
 
-Release Option or Control promptly after pressing the shortcut. ClipSlots waits up to 300 ms for those modifiers to be released. Slot shortcuts preserve the system clipboard. The copy buttons in the menu and clicks on history rows intentionally replace the system clipboard so you can use ordinary ⌘V.
+ClipSlots needs Accessibility access to listen for global shortcuts and paste into active apps.
 
-Regular copies appear in History. You can search, copy, or delete items from the menu. **Clear All** empties the slots and history. Clipboard items marked concealed, transient, or auto-generated are ignored.
+1. Click the **clipboard icon** in the menu bar and select **Open Accessibility Settings**.
+2. In **System Settings → Privacy & Security → Accessibility**, enable **ClipSlots**. If it is not listed, click **+** and select `build/ClipSlots.app` from this repository.
+3. Return to the ClipSlots menu and click **Refresh**. If macOS prompts you to reopen the app, quit and relaunch the same app bundle.
+
+## Shortcuts & Usage
+
+| Slot | Copy selection | Paste into active app |
+| :--- | :--- | :--- |
+| **Slot 1** | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>V</kbd> |
+| **Slot 2** | <kbd>⌃</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>⌃</kbd><kbd>⌘</kbd><kbd>V</kbd> |
+
+- **Modifier release:** Release <kbd>⌥</kbd> (Option) or <kbd>⌃</kbd> (Control) promptly after pressing a shortcut—ClipSlots waits up to 300 ms for modifier keys to release.
+- **System clipboard behavior:** Slot shortcuts leave your standard system clipboard untouched. Clicking a menu copy button or a history row intentionally replaces the system clipboard so you can paste normally with <kbd>⌘</kbd><kbd>V</kbd>.
