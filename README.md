@@ -1,6 +1,6 @@
 # ClipSlots
 
-A lightweight, native macOS menu bar clipboard manager that gives you **two dedicated clipboard slots** and a **30-item plain-text history**—all stored strictly in memory.
+A lightweight, native macOS menu bar clipboard manager that gives you **two additional dedicated clipboard slots** and a **30-item plain-text history**—all stored strictly in memory.
 
 ## Features
 
