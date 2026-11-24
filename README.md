@@ -1,6 +1,6 @@
 # ClipSlots is a ClipBoard-for-Mac
 
-A native macOS menu bar clipboard manager with two keyboard-accessible slots and 30 recent plain-text copies. It keeps slots and history in memory, so both clear when the app quits. It requires macOS 14 or later and Xcode Command Line Tools with Swift 6 or later.
+It's a native macOS menu bar clipboard manager with two keyboard-accessible slots and 30 recent plain-text copies. It keeps slots and history in memory, so both clear when the app quits. It requires macOS 14 or later and Xcode Command Line Tools with Swift 6 or later.
 
 ## Build and launch
 
